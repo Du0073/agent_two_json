@@ -4,14 +4,23 @@ Este proyecto contiene un agente en Python diseñado para revisar proyectos alma
 
 ## Estructura del Proyecto
 project_directory/
+
 ├── main.py
+
 ├── .env
+
 ├── output/
+
 │   ├── proyecto1.json
+
 │   └── proyecto2.json
-└── configs/
+
+└── configs
+
     ├── agent_review.py
+    
     ├── json_utils.py
+    
     └── tools.py
 
 
