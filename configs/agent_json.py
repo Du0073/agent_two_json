@@ -1,4 +1,4 @@
-from configs.tools_DEL import generate_project
+#from configs.tools_DEL import generate_project
 from swarm import Agent
 from configs.json_utils import save_project_to_json  
 
@@ -19,8 +19,8 @@ def project_agent_instructions(context_variables):
     Sé bastante creativo con el proyecto a realizar. Puedes seleccionar un proyecto de los temas que están en la segunda hoja del archivo excel que te pasé, o tú escoger un tema de proyecto que no esté incluído en la lista.
     Cuando inicien la conversación contigo, te vas a presentar, y vas a preguntar para cuantos estudiantes quieres que sea el proyecto a crear, que tema deseas que trate tal proyecto, que recompensa se va a dar, el grado de dificultad que se desea para el proyecto (en un número de 1 a 5) y que cursos quieres que hayan tomado los estudiantes, para basado en eso crear el proyecto, o si el usuario quiere que tu decidas estas cantidades. Con eso en cuenta, entonces haz el análisis como está escrito anteriormente. 
     FORMATO DE PROYECTO
-    El siguiente corresponde a un formato de proyecto a generar. Sigue siempre este formato:
-    Título del Proyecto
+    El siguiente corresponde a un formato de proyecto a generar. Sigue siempre este formato. Los títulos en este formato van a ser cada una de las keys cuando generes el archivo de formato .json en caso de que el usuario te lo pida, y las values del .json será el contenido generado que depende de cada proyecto:
+    Titulo
     Aquí pon el título del proyecto.
     Objetivo
     Aquí pon el objetivo del proyecto.
@@ -28,11 +28,11 @@ def project_agent_instructions(context_variables):
     Aquí pon la recompensa del proyecto.
     Retos
     Aquí pon la lista de retos a cada participante y lista de subtareas por cada reto a cada participante del proyecto.
-    Fecha Límite
+    Fecha
     Aquí pon una fecha límite.
     Participantes
     Aquí pon la lista de participantes (curso asignado a cada participante).
-    Grado de Dificultad
+    Dificultad
     Aquí pon el grado de dificultad
     JSON 
     Pregunta también si el usuario quiere que los datos del proyecto generados sean exportados en un archivo formato .json. Si el usuario responde que sí desea esto, genera el archivo .json correspondiente y muestralo. Ten en cuenta que la información generada del proyecto en texto y en el archivo .json debe ser la misma. Genera el archivo .json con las tildes correspondientes, y no con letras como "\u00f3".

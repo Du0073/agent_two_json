@@ -1,0 +1,56 @@
+{
+    "titulo": "Estrategias de Mitigación del Cambio Climático",
+    "objetivo": "Desarrollar una serie de estrategias prácticas para mitigar el cambio climático en entornos urbanos, analizando datos y proponiendo soluciones sustentables.",
+    "recompensa": "Aprendizaje",
+    "retos": [
+        {
+            "nombre": "Investigación sobre el impacto del cambio climático en la biodiversidad urbana",
+            "tareas": [
+                "Realizar una revisión bibliográfica de al menos 10 artículos sobre el cambio climático y la biodiversidad.",
+                "Desarrollar un informe de 2 páginas sobre especies en riesgo en zonas urbanas específicas.",
+                "Proponer al menos 3 iniciativas de conservación y mitigación para especies en riesgo."
+            ]
+        },
+        {
+            "nombre": "Análisis de huella de carbono en transporte público y privado",
+            "tareas": [
+                "Calcular la huella de carbono promedio de diferentes medios de transporte en una ciudad.",
+                "Identificar áreas de mejora en el sistema de transporte público para reducir emisiones.",
+                "Crear una propuesta de 3 iniciativas para incentivar el uso de transporte sustentable."
+            ]
+        },
+        {
+            "nombre": "Diseño de un modelo de ciudad verde",
+            "tareas": [
+                "Investigar prácticas sostenibles de diseño urbano en 5 ciudades reconocidas.",
+                "Elaborar un plan de 'ciudad verde' que incluya áreas verdes, gestión de residuos y transporte sostenible.",
+                "Presentar el plan en una presentación de 5 diapositivas."
+            ]
+        },
+        {
+            "nombre": "Evaluación del impacto de políticas gubernamentales en cambio climático",
+            "tareas": [
+                "Seleccionar 3 políticas gubernamentales de cambio climático a nivel nacional o regional.",
+                "Analizar su efectividad con estudios de caso y datos disponibles.",
+                "Proponer recomendaciones para fortalecer las políticas actuales."
+            ]
+        },
+        {
+            "nombre": "Propuesta de campaña de concienciación sobre reducción de residuos",
+            "tareas": [
+                "Investigar los residuos urbanos más comunes y su impacto en el medio ambiente.",
+                "Crear una campaña con mensajes clave y materiales gráficos.",
+                "Desarrollar un plan para implementar la campaña en una comunidad local."
+            ]
+        }
+    ],
+    "fecha_limite": "30 días",
+    "participantes": [
+        "Sostenibilidad Urbana",
+        "Ecología Urbana",
+        "Transporte y Medio Ambiente",
+        "Políticas Públicas Sostenibles",
+        "Gestión de Residuos"
+    ],
+    "grado_dificultad": 3
+}

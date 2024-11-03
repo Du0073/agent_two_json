@@ -12,7 +12,7 @@ if __name__ == "__main__":
         "excel_file": "/home/asus/Hacky Platzi 2024/agent_jaky/data/Cursos_rutas_escuelas.xlsx",
         "openai_api_key": os.getenv("OPENAI_API_KEY")  # Cargar la clave desde las variables de entorno
     }
-    #run_demo_loop(project_agent_json, context_variables=context_variables, debug=True)
     #run_demo_loop(project_agent, context_variables=context_variables, debug=True)
+    #run_demo_loop(project_agent_json, context_variables=context_variables, debug=True)
     run_demo_loop(project_reviewer_agent, context_variables=context_variables, debug=True)
 

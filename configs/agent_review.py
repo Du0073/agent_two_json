@@ -1,8 +1,8 @@
 import os
-from swarm import Agent
 from configs.json_utils import load_project_from_json
+from swarm import Agent
 
-# Función para revisar el proyecto y emitir una opinión
+# Función para revisar el proyecto, emitir una opinión y generar un resumen
 def review_project(context_variables):
     # Listar archivos en la carpeta output
     output_dir = "output"
@@ -34,46 +34,54 @@ def review_project(context_variables):
     project_file = os.path.join(output_dir, selected_file)
     project_data = load_project_from_json(project_file)
     
-    # Criterios de evaluación flexibles
-    opinion = "bueno"  # Valor por defecto
-    reasons = []
+    # Almacenar el contenido del archivo en context_variables para acceso continuo
+    context_variables["project_data"] = project_data
 
-    # Evaluación general de los campos principales
-    required_fields = ["titulo", "objetivo"]
-    for field in required_fields:
-        if field not in project_data or not project_data[field]:
-            opinion = "malo"
-            reasons.append(f"El proyecto carece de un {field} claro.")
-
-    # Evaluar campos adicionales si están presentes
-    if "retos" in project_data:
-        if len(project_data["retos"]) < 3:
-            opinion = "regular" if opinion == "bueno" else opinion
-            reasons.append("El proyecto tiene pocos retos. Se recomienda más variedad.")
-    if "dificultad" in project_data:
-        if project_data["dificultad"] < 2:
-            reasons.append("El nivel de dificultad es bajo y podría no ser suficiente desafío.")
-            opinion = "regular" if opinion != "malo" else opinion
-        elif project_data["dificultad"] > 4:
-            reasons.append("El nivel de dificultad es alto, lo que puede ser un desafío significativo para algunos estudiantes.")
-
-    # Generar comentarios finales
-    review_result = {
-        "opinion": opinion,
-        "reasons": reasons if reasons else ["El proyecto cumple con los criterios básicos."]
-    }
+    # Generar un resumen del proyecto
+    resumen = f"Resumen del Proyecto:\n"
+    resumen += f"Título: {project_data.get('Titulo', 'No especificado')}\n"
+    resumen += f"Objetivo: {project_data.get('Objetivo', 'No especificado')}\n"
+    resumen += f"Recompensa: {project_data.get('Recompensa', 'No especificada')}\n"
+    resumen += f"Fecha Límite: {project_data.get('Fecha', 'No especificada')}\n"
+    resumen += f"Dificultad: {project_data.get('Dificultad', 'No especificada')}\n"
     
-    # Imprimir el resultado
-    print(f"\nOpinión sobre el proyecto: {review_result['opinion'].capitalize()}")
-    for reason in review_result["reasons"]:
-        print(f"- {reason}")
+    # Resumir los retos y subtareas
+    resumen += "Retos:\n"
+    for idx, reto in enumerate(project_data.get("Retos", []), 1):
+        # Verificar si "reto" es un diccionario
+        if isinstance(reto, dict):
+            resumen += f"  Reto {idx}: {reto.get('Tarea', 'No especificada')}\n"
+            for subtarea in reto.get("Subtareas", []):
+                resumen += f"    - {subtarea}\n"
+        else:
+            # En caso de que el reto no sea un diccionario
+            resumen += f"  Reto {idx}: Información no especificada o en formato incorrecto\n"
+    
+    # Listar los participantes
+    participantes = project_data.get("Participantes", [])
+    resumen += "Participantes:\n" + "\n".join([f"  - {participante}" for participante in participantes]) + "\n"
 
-    return review_result
+    # Imprimir el resumen
+    print(resumen)
+
+    # Almacenar el resumen en context_variables para consultas futuras
+    context_variables["project_summary"] = resumen
+
+    return resumen
+
+
+def project_reviewer_instructions(context_variables):
+    return """
+    Al iniciar, este agente mostrará todos los archivos JSON en la carpeta 'output'. 
+    
+    Te pedirá que selecciones un archivo para revisar, generará un resumen del contenido del proyecto, y además podrás hacer preguntas específicas sobre los campos del proyecto, como el título, objetivo, recompensa, retos, fecha, participantes y dificultad.
+    """
+
 
 # Definir el agente que realiza la revisión
 project_reviewer_agent = Agent(
     name="Project Reviewer Agent",
-    instructions="Al iniciar, este agente mostrará todos los archivos JSON en la carpeta 'output'. Luego, te pedirá que selecciones un archivo para revisar y emitirá una opinión sobre la calidad del proyecto.",
+    instructions=project_reviewer_instructions,
     functions=[review_project],
     parallel_tool_calls=False
 )
