@@ -10,12 +10,17 @@ project_directory/
 ├── .env
 
 ├── output/
+
 │   ├── proyecto1.json
+
 │   └── proyecto2.json
 
 └── configs/
+
     ├── agent_review.py  
+    
     ├── json_utils.py
+    
     └── tools.py
 
 
