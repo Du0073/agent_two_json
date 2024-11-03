@@ -3,7 +3,17 @@
 Este proyecto contiene un agente en Python diseñado para revisar proyectos almacenados en formato JSON, proporcionando un resumen y una opinión sobre la calidad de cada proyecto en función de sus principales características. La estructura se adapta para ser usada con GitHub y es fácil de ejecutar y mantener.
 
 ## Estructura del Proyecto
-project_directory/ ├── main.py ├── .env ├── output/ │ ├── proyecto1.json │ └── proyecto2.json └── configs/ ├── agent_review.py ├── json_utils.py └── tools.py
+project_directory/
+├── main.py
+├── .env
+├── output/
+│   ├── proyecto1.json
+│   └── proyecto2.json
+└── configs/
+    ├── agent_review.py
+    ├── json_utils.py
+    └── tools.py
+
 
 
 ## Descripción de Archivos
