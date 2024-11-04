@@ -1,5 +1,6 @@
 import os
 from configs.json_utils import load_project_from_json
+from configs.instructions import project_reviewer_instructions
 from swarm import Agent
 
 # Función para revisar el proyecto, emitir una opinión y generar un resumen
@@ -68,15 +69,6 @@ def review_project(context_variables):
     context_variables["project_summary"] = resumen
 
     return resumen
-
-
-def project_reviewer_instructions(context_variables):
-    return """
-    Al iniciar, este agente mostrará todos los archivos JSON en la carpeta 'output'. 
-    
-    Te pedirá que selecciones un archivo para revisar, generará un resumen del contenido del proyecto, y además podrás hacer preguntas específicas sobre los campos del proyecto, como el título, objetivo, recompensa, retos, fecha, participantes y dificultad.
-    """
-
 
 # Definir el agente que realiza la revisión
 project_reviewer_agent = Agent(
