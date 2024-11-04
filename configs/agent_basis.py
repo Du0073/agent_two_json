@@ -1,4 +1,3 @@
-from configs.tools_DEL import generate_project
 from swarm import Agent
 
 def project_agent_instructions(context_variables):
@@ -17,7 +16,7 @@ def project_agent_instructions(context_variables):
     """
 
 # El agente principal que maneja la generación del proyecto
-project_agent = Agent(
+agent_project = Agent(
     name="Project Generator Agent",
     instructions=project_agent_instructions,
     #functions=[generate_project],
